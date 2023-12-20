@@ -199,7 +199,7 @@ class LRMInferrer:
         image = torch.nn.functional.interpolate(image, size=(source_image_size, source_image_size), mode='bicubic', align_corners=True)
         image = torch.clamp(image, 0, 1)
         results = self.infer_single(
-            image.cuda(),
+            image.to(self.device),
             render_size=render_size if render_size > 0 else self.infer_kwargs['render_size'],
             mesh_size=mesh_size,
             export_video=export_video,
