@@ -62,7 +62,7 @@ Model cards with additional details can be found in [model_card.md](model_card.m
 
     ```
     # Example usage
-    python -m lrm.inferrer --model_name lrm-small-obj-v1 --source_image ./assets/sample_input/building.png --export_video --export_mesh
+    python -m lrm.inferrer --model_name lrm-base-obj-v1 --source_image ./assets/sample_input/owl.png --export_video --export_mesh
     ```
 
 ## Training
