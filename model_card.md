@@ -2,7 +2,7 @@
 
 ## Overview
 
-This model card is for the [OpenLRM](https://github.com/OpenLRM/OpenLRM) project, which is an open-source implementation of the paper [LRM](https://arxiv.org/abs/2311.04400).
+This model card is for the [OpenLRM](https://github.com/3DTopia/OpenLRM) project, which is an open-source implementation of the paper [LRM](https://arxiv.org/abs/2311.04400).
 
 ## Model Details
 
