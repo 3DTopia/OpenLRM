@@ -1,0 +1,7 @@
+torch>=2.1.0
+transformers
+omegaconf
+pillow
+imageio[ffmpeg]
+PyMCubes
+trimesh
