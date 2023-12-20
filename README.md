@@ -61,8 +61,12 @@ Model cards with additional details can be found in [model_card.md](model_card.m
 - You may specify which form of output to generate by setting the flags `--export_video` and `--export_mesh`.
 
     ```
-    # Example usage
-    python -m lrm.inferrer --model_name lrm-base-obj-v1 --source_image ./assets/sample_input/owl.png --export_video --export_mesh
+    # Example usages
+    # Render a video
+    python -m lrm.inferrer --model_name lrm-base-obj-v1 --source_image ./assets/sample_input/owl.png --export_video
+    
+    # Export mesh
+    python -m lrm.inferrer --model_name lrm-base-obj-v1 --source_image ./assets/sample_input/owl.png --export_mesh
     ```
 
 ## Training
