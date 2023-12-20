@@ -8,10 +8,8 @@ This model card is for the [OpenLRM](https://github.com/OpenLRM/OpenLRM) project
 
 | Model | Training Data | Layers | Feat. Dim | Trip. Dim. | Render Res. | Link |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| LRM-Small-Obj | Objaverse | 12 | 768 | 32 | 192 | To be released |
 | LRM-Base-Obj | Objaverse | 12 | 1024 | 40 | 192 | [HF](https://huggingface.co/zxhezexin/OpenLRM) |
 | LRM-Large-Obj | Objaverse | 16 | 1024 | 80 | 384 | [HF](https://huggingface.co/zxhezexin/OpenLRM) |
-| LRM-Small | Objaverse + MVImgNet | 12 | 768 | 32 | 192 | To be released |
 | LRM-Base | Objaverse + MVImgNet | 12 | 1024 | 40 | 192 | To be released |
 | LRM-Large | Objaverse + MVImgNet | 16 | 1024 | 80 | 384 | To be released |
 
