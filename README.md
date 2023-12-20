@@ -7,32 +7,32 @@
 ### Rendered Video
 
 <div style="text-align: left">
-    <img src="assets/rendered_video/girl-l.gif" width="32%" height="auto"/>
-    <img src="assets/rendered_video/building-l.gif" width="32%" height="auto"/>
-    <img src="assets/rendered_video/owl-l.gif" width="32%" height="auto"/>
+    <img src="assets/rendered_video/girl-l.gif" width="28%" height="auto"/>
+    <img src="assets/rendered_video/building-l.gif" width="28%" height="auto"/>
+    <img src="assets/rendered_video/owl-l.gif" width="28%" height="auto"/>
 </div>
 <div style="text-align: left">
-    <img src="assets/rendered_video/hotdogs-l.gif" width="24%" height="auto"/>
-    <img src="assets/rendered_video/hydrant-l.gif" width="24%" height="auto"/>
-    <img src="assets/rendered_video/cake-b.gif" width="24%" height="auto"/>
-    <img src="assets/rendered_video/penguin-b.gif" width="24%" height="auto"/>
+    <img src="assets/rendered_video/hotdogs-l.gif" width="21%" height="auto"/>
+    <img src="assets/rendered_video/hydrant-l.gif" width="21%" height="auto"/>
+    <img src="assets/rendered_video/cake-b.gif" width="21%" height="auto"/>
+    <img src="assets/rendered_video/penguin-b.gif" width="21%" height="auto"/>
 </div>
 <div style="text-align: left">
-    <img src="assets/rendered_video/stack-b.gif" width="24%" height="auto"/>
-    <img src="assets/rendered_video/mailbox-b.gif" width="24%" height="auto"/>
-    <img src="assets/rendered_video/fire-b.gif" width="24%" height="auto"/>
-    <img src="assets/rendered_video/wood-b.gif" width="24%" height="auto"/>
+    <img src="assets/rendered_video/stack-b.gif" width="21%" height="auto"/>
+    <img src="assets/rendered_video/mailbox-b.gif" width="21%" height="auto"/>
+    <img src="assets/rendered_video/fire-b.gif" width="21%" height="auto"/>
+    <img src="assets/rendered_video/wood-b.gif" width="21%" height="auto"/>
 </div>
 
 ### Mesh Snapshot
 
 <div style="text-align: left">
-    <img src="assets/mesh_snapshot/crop.owl.ply00.png" width="15%" height="auto"/>
-    <img src="assets/mesh_snapshot/crop.owl.ply01.png" width="15%" height="auto"/>
-    <img src="assets/mesh_snapshot/crop.building.ply00.png" width="15%" height="auto"/>
-    <img src="assets/mesh_snapshot/crop.building.ply01.png" width="15%" height="auto"/>
-    <img src="assets/mesh_snapshot/crop.rose.ply00.png" width="15%" height="auto"/>
-    <img src="assets/mesh_snapshot/crop.rose.ply01.png" width="15%" height="auto"/>
+    <img src="assets/mesh_snapshot/crop.owl.ply00.png" width="14%" height="auto"/>
+    <img src="assets/mesh_snapshot/crop.owl.ply01.png" width="14%" height="auto"/>
+    <img src="assets/mesh_snapshot/crop.building.ply00.png" width="14%" height="auto"/>
+    <img src="assets/mesh_snapshot/crop.building.ply01.png" width="14%" height="auto"/>
+    <img src="assets/mesh_snapshot/crop.rose.ply00.png" width="14%" height="auto"/>
+    <img src="assets/mesh_snapshot/crop.rose.ply01.png" width="14%" height="auto"/>
 </div>
 
 ## News
@@ -44,7 +44,7 @@
 
 ### Installation
 ```
-git clone https://github.com/OpenLRM/OpenLRM.git
+git clone https://github.com/3DTopia/OpenLRM.git
 cd OpenLRM
 ```
 
@@ -61,10 +61,8 @@ pip install -r requirements.txt
 
 | Model | Training Data | Layers | Feat. Dim | Trip. Dim. | Render Res. | Link |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| LRM-Small-Obj | Objaverse | 12 | 768 | 32 | 192 | To be released |
 | LRM-Base-Obj | Objaverse | 12 | 1024 | 40 | 192 | [HF](https://huggingface.co/zxhezexin/OpenLRM) |
 | LRM-Large-Obj | Objaverse | 16 | 1024 | 80 | 384 | [HF](https://huggingface.co/zxhezexin/OpenLRM) |
-| LRM-Small | Objaverse + MVImgNet | 12 | 768 | 32 | 192 | To be released |
 | LRM-Base | Objaverse + MVImgNet | 12 | 1024 | 40 | 192 | To be released |
 | LRM-Large | Objaverse + MVImgNet | 16 | 1024 | 80 | 384 | To be released |
 
