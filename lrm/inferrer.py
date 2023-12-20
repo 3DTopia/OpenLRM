@@ -48,10 +48,12 @@ class LRMInferrer:
         if not os.path.exists(cache_dir):
             os.makedirs(cache_dir, exist_ok=True)
         if not os.path.exists(os.path.join(cache_dir, f'{model_name}.pth')):
-            # TODO: on-the-fly download not supported yet, plz download manually
             # os.system(f'wget -O {os.path.join(cache_dir, f"{model_name}.pth")} https://zxhezexin.com/modelzoo/openlrm/{model_name}.pth')
-            raise FileNotFoundError(f"Checkpoint {model_name} not found in {cache_dir}")
-        local_path = os.path.join(cache_dir, f'{model_name}.pth')
+            # raise FileNotFoundError(f"Checkpoint {model_name} not found in {cache_dir}")
+            from huggingface_hub import hf_hub_download
+            local_path = hf_hub_download(repo_id='zxhezexin/OpenLRM', filename=f'{model_name}.pth', local_dir=cache_dir)
+        else:
+            local_path = os.path.join(cache_dir, f'{model_name}.pth')
         checkpoint = torch.load(local_path, map_location=self.device)
         return checkpoint
 

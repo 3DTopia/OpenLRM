@@ -37,7 +37,9 @@ pip install -r requirements.txt
 
 ### Pretrained Models
 
-- Download pretrained model weights from [Hugging Face](https://huggingface.co/zxhezexin/OpenLRM) and put the checkpoints into `.cache` folder.
+- Model weights are released on [Hugging Face](https://huggingface.co/zxhezexin/OpenLRM).
+- Weights will be downloaded automatically when you run the inference script for the first time.
+- Please be aware of the [license](LICENSE_WEIGHT) before using the weights.
 
 | Model | Training Data | Layers | Feat. Dim | Trip. Dim. | Render Res. | Link |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
