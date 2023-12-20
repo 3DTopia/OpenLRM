@@ -4,11 +4,7 @@
 [![Weight License](https://img.shields.io/badge/Weight%20License-CC%20By%20NC%204.0-red)](LICENSE_WEIGHT)
 [![LRM](https://img.shields.io/badge/LRM-Arxiv%20Link-green)](https://arxiv.org/abs/2311.04400)
 
-### Rendered Video
-
 <img src="assets/rendered_video/teaser.gif" width="75%" height="auto"/>
-
-### Mesh Snapshot
 
 <div style="text-align: left">
     <img src="assets/mesh_snapshot/crop.owl.ply00.png" width="12%" height="auto"/>
