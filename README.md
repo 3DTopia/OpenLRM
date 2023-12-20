@@ -107,7 +107,7 @@ If you find this work useful for your research, please consider citing:
   title = {OpenLRM: Open-Source Large Reconstruction Models},
   author = {Zexin He and Tengfei Wang},
   year = {2023},
-  howpublished = {\url{https://github.com/OpenLRM/OpenLRM}},
+  howpublished = {\url{https://github.com/3DTopia/OpenLRM}},
 }
 ```
 
