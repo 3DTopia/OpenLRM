@@ -234,11 +234,11 @@ if __name__ == '__main__':
 
     """
     Example usage:
-    python -m lrm.inferrer --model_name lrm-small-935bbcb --source_image ./assets/sample_input/owl.png --export_video --export_mesh
+    python -m lrm.inferrer --model_name lrm-base-obj-v1 --source_image ./assets/sample_input/owl.png --export_video --export_mesh
     """
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('--model_name', type=str, default='lrm-small-935bbcb')
+    parser.add_argument('--model_name', type=str, default='lrm-base-obj-v1')
     parser.add_argument('--source_image', type=str, default='./assets/sample_input/owl.png')
     parser.add_argument('--dump_path', type=str, default='./dumps')
     parser.add_argument('--source_size', type=int, default=-1)
