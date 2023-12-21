@@ -4,6 +4,9 @@
 [![Weight License](https://img.shields.io/badge/Weight%20License-CC%20By%20NC%204.0-red)](LICENSE_WEIGHT)
 [![LRM](https://img.shields.io/badge/LRM-Arxiv%20Link-green)](https://arxiv.org/abs/2311.04400)
 
+[![HF Models](https://img.shields.io/badge/Models-Huggingface%20Models-bron)](https://huggingface.co/zxhezexin/OpenLRM)
+[![HF Demo](https://img.shields.io/badge/Demo-Huggingface%20Demo-blue)](https://huggingface.co/spaces/zxhezexin/OpenLRM)
+
 <img src="assets/rendered_video/teaser.gif" width="75%" height="auto"/>
 
 <div style="text-align: left">
@@ -17,6 +20,7 @@
 
 ## News
 
+- [2023.12.21] [Hugging Face Demo](https://huggingface.co/spaces/zxhezexin/OpenLRM) is online. Have a try!
 - [2023.12.20] Release weights of the base and large models trained on Objaverse.
 - [2023.12.20] We release this project OpenLRM, which is an open-source implementation of the paper [LRM](https://arxiv.org/abs/2311.04400).
 
