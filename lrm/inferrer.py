@@ -135,7 +135,7 @@ class LRMInferrer:
 
     def infer_single(self, image: torch.Tensor, render_size: int, mesh_size: int, export_video: bool, export_mesh: bool):
         # image: [1, C_img, H_img, W_img]
-        mesh_thres = 1.0
+        mesh_thres = 3.0
         chunk_size = 2
         batch_size = 1
 
