@@ -8,10 +8,12 @@ This model card is for the [OpenLRM](https://github.com/3DTopia/OpenLRM) project
 
 | Model | Training Data | Layers | Feat. Dim | Trip. Dim. | Render Res. | Link |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| LRM-Base-Obj | Objaverse | 12 | 1024 | 40 | 192 | [HF](https://huggingface.co/zxhezexin/OpenLRM) |
-| LRM-Large-Obj | Objaverse | 16 | 1024 | 80 | 384 | [HF](https://huggingface.co/zxhezexin/OpenLRM) |
-| LRM-Base | Objaverse + MVImgNet | 12 | 1024 | 40 | 192 | To be released |
-| LRM-Large | Objaverse + MVImgNet | 16 | 1024 | 80 | 384 | To be released |
+| openlrm-small-obj-1.0 | Objaverse | 12 | 768 | 32 | 192 | [HF](https://huggingface.co/zxhezexin/openlrm-small-obj-1.0) |
+| openlrm-base-obj-1.0 | Objaverse | 12 | 1024 | 40 | 192 | [HF](https://huggingface.co/zxhezexin/openlrm-base-obj-1.0) |
+| openlrm-large-obj-1.0 | Objaverse | 16 | 1024 | 80 | 384 | [HF](https://huggingface.co/zxhezexin/openlrm-large-obj-1.0) |
+| openlrm-small | Objaverse + MVImgNet | 12 | 768 | 32 | 192 | To be released |
+| openlrm-base | Objaverse + MVImgNet | 12 | 1024 | 40 | 192 | To be released |
+| openlrm-large | Objaverse + MVImgNet | 16 | 1024 | 80 | 384 | To be released |
 
 ## Differences from the Original Paper
 
