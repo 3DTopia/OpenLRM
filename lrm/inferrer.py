@@ -45,16 +45,19 @@ class LRMInferrer:
 
     def _load_checkpoint(self, model_name: str, cache_dir = './.cache'):
         # download checkpoint if not exists
-        if not os.path.exists(cache_dir):
-            os.makedirs(cache_dir, exist_ok=True)
-        if not os.path.exists(os.path.join(cache_dir, f'{model_name}.pth')):
+        local_dir = os.path.join(cache_dir, model_name)
+        if not os.path.exists(local_dir):
+            os.makedirs(local_dir, exist_ok=True)
+        if not os.path.exists(os.path.join(local_dir, f'model.pth')):
             # os.system(f'wget -O {os.path.join(cache_dir, f"{model_name}.pth")} https://zxhezexin.com/modelzoo/openlrm/{model_name}.pth')
             # raise FileNotFoundError(f"Checkpoint {model_name} not found in {cache_dir}")
             from huggingface_hub import hf_hub_download
-            local_path = hf_hub_download(repo_id='zxhezexin/OpenLRM', filename=f'{model_name}.pth', local_dir=cache_dir)
+            repo_id = f'zxhezexin/{model_name}'
+            config_path = hf_hub_download(repo_id=repo_id, filename='config.json', local_dir=local_dir)
+            model_path = hf_hub_download(repo_id=repo_id, filename=f'model.pth', local_dir=local_dir)
         else:
-            local_path = os.path.join(cache_dir, f'{model_name}.pth')
-        checkpoint = torch.load(local_path, map_location=self.device)
+            model_path = os.path.join(local_dir, f'model.pth')
+        checkpoint = torch.load(model_path, map_location=self.device)
         return checkpoint
 
     def _build_model(self, model_kwargs, model_weights):
@@ -224,23 +227,25 @@ class LRMInferrer:
                 else:
                     # torch.save(v[0], os.path.join(dump_path, f'{uid}_{k}.pth'))
                     pass
+            print(f"Video dumped to {dump_path}")
 
         # dump mesh
         if 'mesh' in results:
             mesh = results['mesh']
             # save ply format mesh
             mesh.export(os.path.join(dump_path, f'{uid}.ply'), 'ply')
+            print(f"Mesh dumped to {dump_path}")
 
 
 if __name__ == '__main__':
 
     """
     Example usage:
-    python -m lrm.inferrer --model_name lrm-base-obj-v1 --source_image ./assets/sample_input/owl.png --export_video --export_mesh
+    python -m lrm.inferrer --model_name openlrm-base-obj-1.0 --source_image ./assets/sample_input/owl.png --export_video --export_mesh
     """
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('--model_name', type=str, default='lrm-base-obj-v1')
+    parser.add_argument('--model_name', type=str, default='openlrm-base-obj-1.0')
     parser.add_argument('--source_image', type=str, default='./assets/sample_input/owl.png')
     parser.add_argument('--dump_path', type=str, default='./dumps')
     parser.add_argument('--source_size', type=int, default=-1)
