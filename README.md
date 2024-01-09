@@ -4,7 +4,7 @@
 [![Weight License](https://img.shields.io/badge/Weight%20License-CC%20By%20NC%204.0-red)](LICENSE_WEIGHT)
 [![LRM](https://img.shields.io/badge/LRM-Arxiv%20Link-green)](https://arxiv.org/abs/2311.04400)
 
-[![HF Models](https://img.shields.io/badge/Models-Huggingface%20Models-bron)](https://huggingface.co/zxhezexin/OpenLRM)
+[![HF Models](https://img.shields.io/badge/Models-Huggingface%20Models-bron)](https://huggingface.co/zxhezexin)
 [![HF Demo](https://img.shields.io/badge/Demo-Huggingface%20Demo-blue)](https://huggingface.co/spaces/zxhezexin/OpenLRM)
 
 <img src="assets/rendered_video/teaser.gif" width="75%" height="auto"/>
@@ -20,6 +20,7 @@
 
 ## News
 
+- [2024.01.09] Updated all v1.0 models trained on Objaverse. Please refer to [HF Models](https://huggingface.co/zxhezexin) and overwrite previous model weights.
 - [2023.12.21] [Hugging Face Demo](https://huggingface.co/spaces/zxhezexin/OpenLRM) is online. Have a try!
 - [2023.12.20] Release weights of the base and large models trained on Objaverse.
 - [2023.12.20] We release this project OpenLRM, which is an open-source implementation of the paper [LRM](https://arxiv.org/abs/2311.04400).
@@ -41,16 +42,18 @@ pip install -r requirements.txt
 
 ### Pretrained Models
 
-- Model weights are released on [Hugging Face](https://huggingface.co/zxhezexin/OpenLRM).
+- Model weights are released on [Hugging Face](https://huggingface.co/zxhezexin).
 - Weights will be downloaded automatically when you run the inference script for the first time.
 - Please be aware of the [license](LICENSE_WEIGHT) before using the weights.
 
 | Model | Training Data | Layers | Feat. Dim | Trip. Dim. | Render Res. | Link |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| LRM-Base-Obj | Objaverse | 12 | 1024 | 40 | 192 | [HF](https://huggingface.co/zxhezexin/OpenLRM) |
-| LRM-Large-Obj | Objaverse | 16 | 1024 | 80 | 384 | [HF](https://huggingface.co/zxhezexin/OpenLRM) |
-| LRM-Base | Objaverse + MVImgNet | 12 | 1024 | 40 | 192 | To be released |
-| LRM-Large | Objaverse + MVImgNet | 16 | 1024 | 80 | 384 | To be released |
+| openlrm-small-obj-1.0 | Objaverse | 12 | 768 | 32 | 192 | [HF](https://huggingface.co/zxhezexin/openlrm-small-obj-1.0) |
+| openlrm-base-obj-1.0 | Objaverse | 12 | 1024 | 40 | 192 | [HF](https://huggingface.co/zxhezexin/openlrm-base-obj-1.0) |
+| openlrm-large-obj-1.0 | Objaverse | 16 | 1024 | 80 | 384 | [HF](https://huggingface.co/zxhezexin/openlrm-large-obj-1.0) |
+| openlrm-small | Objaverse + MVImgNet | 12 | 768 | 32 | 192 | To be released |
+| openlrm-base | Objaverse + MVImgNet | 12 | 1024 | 40 | 192 | To be released |
+| openlrm-large | Objaverse + MVImgNet | 16 | 1024 | 80 | 384 | To be released |
 
 Model cards with additional details can be found in [model_card.md](model_card.md).
 
@@ -65,10 +68,10 @@ Model cards with additional details can be found in [model_card.md](model_card.m
     ```
     # Example usages
     # Render a video
-    python -m lrm.inferrer --model_name lrm-base-obj-v1 --source_image ./assets/sample_input/owl.png --export_video
+    python -m lrm.inferrer --model_name openlrm-base-obj-1.0 --source_image ./assets/sample_input/owl.png --export_video
     
     # Export mesh
-    python -m lrm.inferrer --model_name lrm-base-obj-v1 --source_image ./assets/sample_input/owl.png --export_mesh
+    python -m lrm.inferrer --model_name openlrm-base-obj-1.0 --source_image ./assets/sample_input/owl.png --export_mesh
     ```
 
 ## Training
