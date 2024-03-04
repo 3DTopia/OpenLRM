@@ -1,23 +1,44 @@
-# Model Card for OpenLRM
+# Model Card for OpenLRM V1.1
 
 ## Overview
 
-This model card is for the [OpenLRM](https://github.com/3DTopia/OpenLRM) project, which is an open-source implementation of the paper [LRM](https://arxiv.org/abs/2311.04400).
+- This model card is for the [OpenLRM](https://github.com/3DTopia/OpenLRM) project, which is an open-source implementation of the paper [LRM](https://arxiv.org/abs/2311.04400).
+- Information contained in this model card corresponds to [Version 1.1](https://github.com/3DTopia/OpenLRM/releases).
 
 ## Model Details
 
-| Model | Training Data | Layers | Feat. Dim | Trip. Dim. | Render Res. | Link |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| openlrm-small-obj-1.0 | Objaverse | 12 | 768 | 32 | 192 | [HF](https://huggingface.co/zxhezexin/openlrm-small-obj-1.0) |
-| openlrm-base-obj-1.0 | Objaverse | 12 | 1024 | 40 | 192 | [HF](https://huggingface.co/zxhezexin/openlrm-base-obj-1.0) |
-| openlrm-large-obj-1.0 | Objaverse | 16 | 1024 | 80 | 384 | [HF](https://huggingface.co/zxhezexin/openlrm-large-obj-1.0) |
-| openlrm-small | Objaverse + MVImgNet | 12 | 768 | 32 | 192 | To be released |
-| openlrm-base | Objaverse + MVImgNet | 12 | 1024 | 40 | 192 | To be released |
-| openlrm-large | Objaverse + MVImgNet | 16 | 1024 | 80 | 384 | To be released |
+- Training data
 
-## Differences from the Original Paper
+    | Model | Training Data |
+    | :---: | :---: |
+    | [openlrm-obj-small-1.1](https://huggingface.co/zxhezexin/openlrm-obj-small-1.1) | Objaverse |
+    | [openlrm-obj-base-1.1](https://huggingface.co/zxhezexin/openlrm-obj-base-1.1) | Objaverse |
+    | [openlrm-obj-large-1.1](https://huggingface.co/zxhezexin/openlrm-obj-large-1.1) | Objaverse |
+    | [openlrm-mix-small-1.1](https://huggingface.co/zxhezexin/openlrm-mix-small-1.1) | Objaverse + MVImgNet |
+    | [openlrm-mix-base-1.1](https://huggingface.co/zxhezexin/openlrm-mix-base-1.1) | Objaverse + MVImgNet |
+    | [openlrm-mix-large-1.1](https://huggingface.co/zxhezexin/openlrm-mix-large-1.1) | Objaverse + MVImgNet |
+
+- Model architecture (version==1.1)
+
+    | Type  | Layers | Feat. Dim | Attn. Heads | Triplane Dim. | Input Res. | Image Encoder     | Size  |
+    | :---: | :----: | :-------: | :---------: | :-----------: | :--------: | :---------------: | :---: |
+    | small |   12   |    512    |      8      |      32       |    224     | dinov2_vits14_reg | 446M  |
+    | base  |   12   |    768    |     12      |      48       |    336     | dinov2_vitb14_reg | 1.04G |
+    | large |   16   |   1024    |     16      |      80       |    448     | dinov2_vitb14_reg | 1.81G |
+
+- Training settings
+
+    | Type  | Rend. Res. | Rend. Patch | Ray Samples |
+    | :---: | :--------: | :---------: | :---------: |
+    | small |    192     |     64      |     96      |
+    | base  |    288     |     96      |     96      |
+    | large |    384     |    128      |    128      |
+
+## Notable Differences from the Original Paper
 
 - We do not use the deferred back-propagation technique in the original paper.
+- We used random background colors during training.
+- The image encoder is based on the [DINOv2](https://github.com/facebookresearch/dinov2) model with register tokens.
 - The triplane decoder contains 4 layers in our implementation.
 
 ## License

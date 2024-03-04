@@ -1,0 +1,8 @@
+source_size: 448
+source_cam_dist: 2.0
+render_size: 384
+render_views: 160
+render_fps: 40
+frame_size: 2
+mesh_size: 384
+mesh_thres: 3.0

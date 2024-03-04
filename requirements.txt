@@ -1,7 +1,14 @@
-torch>=2.1.0
-transformers
+torch>=2.1.2
+lpips
 omegaconf
-pillow
+transformers
+safetensors
+accelerate
 imageio[ffmpeg]
 PyMCubes
 trimesh
+megfile
+opencv-python
+optimum[onnxruntime-gpu]
+rembg[gpu,cli]
+httpx[socks]

@@ -20,6 +20,7 @@
 
 ## News
 
+- [2024.03.04] Version update v1.1. Release model weights trained on both Objaverse and MVImgNet. Codebase is majorly refactored for better usability and extensibility. Please refer to [v1.1.0](https://github.com/3DTopia/OpenLRM/releases/tag/v1.1.0) for details.
 - [2024.01.09] Updated all v1.0 models trained on Objaverse. Please refer to [HF Models](https://huggingface.co/zxhezexin) and overwrite previous model weights.
 - [2023.12.21] [Hugging Face Demo](https://huggingface.co/spaces/zxhezexin/OpenLRM) is online. Have a try!
 - [2023.12.20] Release weights of the base and large models trained on Objaverse.
@@ -34,9 +35,11 @@ cd OpenLRM
 ```
 
 ### Environment
-```
-pip install -r requirements.txt
-```
+- Install requirements for OpenLRM first.
+  ```
+  pip install -r requirements.txt
+  ```
+- Please then follow the [xFormers installation guide](https://github.com/facebookresearch/xformers?tab=readme-ov-file#installing-xformers) to enable memory efficient attention inside [DINOv2 encoder](openlrm/models/encoders/dinov2/layers/attention.py).
 
 ## Quick Start
 
@@ -46,14 +49,14 @@ pip install -r requirements.txt
 - Weights will be downloaded automatically when you run the inference script for the first time.
 - Please be aware of the [license](LICENSE_WEIGHT) before using the weights.
 
-| Model | Training Data | Layers | Feat. Dim | Trip. Dim. | Render Res. | Link |
+| Model | Training Data | Layers | Feat. Dim | Trip. Dim. | In. Res. | Link |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| openlrm-small-obj-1.0 | Objaverse | 12 | 768 | 32 | 192 | [HF](https://huggingface.co/zxhezexin/openlrm-small-obj-1.0) |
-| openlrm-base-obj-1.0 | Objaverse | 12 | 1024 | 40 | 192 | [HF](https://huggingface.co/zxhezexin/openlrm-base-obj-1.0) |
-| openlrm-large-obj-1.0 | Objaverse | 16 | 1024 | 80 | 384 | [HF](https://huggingface.co/zxhezexin/openlrm-large-obj-1.0) |
-| openlrm-small | Objaverse + MVImgNet | 12 | 768 | 32 | 192 | To be released |
-| openlrm-base | Objaverse + MVImgNet | 12 | 1024 | 40 | 192 | To be released |
-| openlrm-large | Objaverse + MVImgNet | 16 | 1024 | 80 | 384 | To be released |
+| openlrm-obj-small-1.1 | Objaverse | 12 | 512 | 32 | 224 | [HF](https://huggingface.co/zxhezexin/openlrm-obj-small-1.1) |
+| openlrm-obj-base-1.1 | Objaverse | 12 | 768 | 48 | 336 | [HF](https://huggingface.co/zxhezexin/openlrm-obj-base-1.1) |
+| openlrm-obj-large-1.1 | Objaverse | 16 | 1024 | 80 | 448 | [HF](https://huggingface.co/zxhezexin/openlrm-obj-large-1.1) |
+| openlrm-mix-small-1.1 | Objaverse + MVImgNet | 12 | 512 | 32 | 224 | [HF](https://huggingface.co/zxhezexin/openlrm-mix-small-1.1) |
+| openlrm-mix-base-1.1 | Objaverse + MVImgNet | 12 | 768 | 48 | 336 | [HF](https://huggingface.co/zxhezexin/openlrm-mix-base-1.1) |
+| openlrm-mix-large-1.1 | Objaverse + MVImgNet | 16 | 1024 | 80 | 448 | [HF](https://huggingface.co/zxhezexin/openlrm-mix-large-1.1) |
 
 Model cards with additional details can be found in [model_card.md](model_card.md).
 
@@ -63,16 +66,20 @@ Model cards with additional details can be found in [model_card.md](model_card.m
 
 ### Inference
 - Run the inference script to get 3D assets.
-- You may specify which form of output to generate by setting the flags `--export_video` and `--export_mesh`.
+- You may specify which form of output to generate by setting the flags `EXPORT_VIDEO=true` and `EXPORT_MESH=true`.
+- Please set default `INFER_CONFIG` according to the model you want to use. E.g., `infer-b.yaml` for base models and `infer-s.yaml` for small models.
+- An example usage is as follows:
 
-    ```
-    # Example usages
-    # Render a video
-    python -m lrm.inferrer --model_name openlrm-base-obj-1.0 --source_image ./assets/sample_input/owl.png --export_video
-    
-    # Export mesh
-    python -m lrm.inferrer --model_name openlrm-base-obj-1.0 --source_image ./assets/sample_input/owl.png --export_mesh
-    ```
+  ```
+  # Example usage
+  EXPORT_VIDEO=true
+  EXPORT_MESH=true
+  INFER_CONFIG="./configs/infer-b.yaml"
+  MODEL_NAME="zxhezexin/openlrm-mix-base-1.1"
+  IMAGE_INPUT="./assets/sample_input/owl.png"
+
+  python -m openlrm.launch infer.lrm --infer $INFER_CONFIG model_name=$MODEL_NAME image_input=$IMAGE_INPUT export_video=$EXPORT_VIDEO export_mesh=$EXPORT_MESH
+  ```
 
 ## Training
 To be released soon.
