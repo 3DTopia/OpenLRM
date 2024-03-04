@@ -84,7 +84,7 @@ def demo_openlrm(infer_impl):
         </div>
         OpenLRM is an open-source implementation of Large Reconstruction Models.
 
-        <strong>Image-to-3D in 10 seconds!</strong>
+        <strong>Image-to-3D in 10 seconds with A100!</strong>
 
         <strong>Disclaimer:</strong> This demo uses `openlrm-mix-base-1.1` model with 288x288 rendering resolution here for a quick demonstration.
     '''
@@ -155,7 +155,7 @@ def demo_openlrm(infer_impl):
                 inputs=[input_image], 
                 outputs=[processed_image, output_video],
                 fn=example_fn,
-                cache_examples=os.getenv('SYSTEM') != 'spaces',
+                cache_examples=bool(os.getenv('SPACE_ID')),
                 examples_per_page=20,
             )
 
@@ -197,7 +197,7 @@ def launch_gradio_app():
     InferrerClass : Inferrer = REGISTRY_RUNNERS[os.getenv("APP_TYPE")]
     with InferrerClass() as inferrer:
         init_preprocessor()
-        if os.getenv('SYSTEM') != 'spaces':
+        if not bool(os.getenv('SPACE_ID')):
             from openlrm.utils.proxy import no_proxy
             demo = no_proxy(demo_openlrm)
         else:
