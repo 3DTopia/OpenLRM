@@ -82,6 +82,11 @@ Model cards with additional details can be found in [model_card.md](model_card.m
   python -m openlrm.launch infer.lrm --infer $INFER_CONFIG model_name=$MODEL_NAME image_input=$IMAGE_INPUT export_video=$EXPORT_VIDEO export_mesh=$EXPORT_MESH
   ```
 
+### Tips
+- The recommended PyTorch version is `>=2.1`. Code is developed and tested under PyTorch `2.1.2`.
+- If you encounter CUDA OOM issues, please try to reduce the `frame_size` in the inference configs.
+- You should be able to see `UserWarning: xFormers is available` if `xFormers` is actually working.
+
 ## Training
 To be released soon.
 
