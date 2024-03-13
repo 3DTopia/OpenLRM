@@ -1,0 +1,91 @@
+
+experiment:
+    type: lrm
+    seed: 42
+    parent: lrm-objaverse
+    child: small-dummyrun
+
+model:
+    camera_embed_dim: 1024
+    rendering_samples_per_ray: 96
+    transformer_dim: 512
+    transformer_layers: 12
+    transformer_heads: 8
+    triplane_low_res: 32
+    triplane_high_res: 64
+    triplane_dim: 32
+    encoder_type: dinov2
+    encoder_model_name: dinov2_vits14_reg
+    encoder_feat_dim: 384
+    encoder_freeze: false
+
+dataset:
+    subsets:
+        -   name: objaverse
+            root_dirs:
+                - <REPLACE_WITH_RENDERING_ROOT>
+            meta_path:
+                train: <TRAIN_UIDS_IN_JSON>
+                val: <VAL_UIDS_IN_JSON>
+            sample_rate: 1.0
+    sample_side_views: 3
+    source_image_res: 224
+    render_image:
+        low: 64
+        high: 192
+        region: 64
+    normalize_camera: true
+    normed_dist_to_center: auto
+    num_train_workers: 4
+    num_val_workers: 2
+    pin_mem: true
+
+train:
+    mixed_precision: bf16  # REPLACE THIS BASED ON GPU TYPE
+    find_unused_parameters: false
+    loss:
+        pixel_weight: 1.0
+        perceptual_weight: 1.0
+        tv_weight: 5e-4
+    optim:
+        lr: 4e-4
+        weight_decay: 0.05
+        beta1: 0.9
+        beta2: 0.95
+        clip_grad_norm: 1.0
+    scheduler:
+        type: cosine
+        warmup_real_iters: 3000
+    batch_size: 16  # REPLACE THIS (PER GPU)
+    accum_steps: 1  # REPLACE THIS
+    epochs: 60  # REPLACE THIS
+    debug_global_steps: null
+
+val:
+    batch_size: 4
+    global_step_period: 1000
+    debug_batches: null
+
+saver:
+    auto_resume: true
+    load_model: null
+    checkpoint_root: ./exps/checkpoints
+    checkpoint_global_steps: 1000
+    checkpoint_keep_level: 5
+
+logger:
+    stream_level: WARNING
+    log_level: INFO
+    log_root: ./exps/logs
+    tracker_root: ./exps/trackers
+    enable_profiler: false
+    trackers:
+        - tensorboard
+    image_monitor:
+        train_global_steps: 100
+        samples_per_log: 4
+
+compile:
+    suppress_errors: true
+    print_specializations: true
+    disable: true

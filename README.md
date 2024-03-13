@@ -20,6 +20,7 @@
 
 ## News
 
+- [2024.03.13] Update [training code](openlrm/runners/train) and release [OpenLRM v1.1.1](https://github.com/3DTopia/OpenLRM/releases/tag/v1.1.1).
 - [2024.03.08] We have released the core [blender script](scripts/data/objaverse/blender_script.py) used to render Objaverse images.
 - [2024.03.05] The [Huggingface demo](https://huggingface.co/spaces/zxhezexin/OpenLRM) now uses `openlrm-mix-base-1.1` model by default. Please refer to the [model card](model_card.md) for details on the updated model architecture and training settings.
 - [2024.03.04] Version update v1.1. Release model weights trained on both Objaverse and MVImgNet. Codebase is majorly refactored for better usability and extensibility. Please refer to [v1.1.0](https://github.com/3DTopia/OpenLRM/releases/tag/v1.1.0) for details.
@@ -89,7 +90,27 @@ Model cards with additional details can be found in [model_card.md](model_card.m
 - You should be able to see `UserWarning: xFormers is available` if `xFormers` is actually working.
 
 ## Training
-To be released soon.
+
+### Configuration
+- We provide a sample accelerate config file under `configs/accelerate-train.yaml`, which defaults to use 8 GPUs with `bf16` mixed precision.
+- You may modify the configuration file to fit your own environment.
+
+### Data Preparation
+- We provide the core [Blender script](scripts/data/objaverse/blender_script.py) used to render Objaverse images.
+- Please refer to [Objaverse Rendering](https://github.com/allenai/objaverse-rendering) for other scripts including distributed rendering.
+
+### Run Training
+- A sample training config file is provided under `configs/train-sample.yaml`.
+- Please replace data related paths in the config file with your own paths and customize the training settings.
+- An example training usage is as follows:
+
+  ```
+  # Example usage
+  ACC_CONFIG="./configs/accelerate-train.yaml"
+  TRAIN_CONFIG="./configs/train-sample.yaml"
+
+  accelerate launch --config_file $ACC_CONFIG -m openlrm.launch train.lrm --config $TRAIN_CONFIG
+  ```
 
 ## Acknowledgement
 

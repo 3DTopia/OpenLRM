@@ -61,6 +61,32 @@ def decompose_extrinsic_RT(E: torch.Tensor):
     return E[:, :3, :]
 
 
+def camera_normalization_objaverse(normed_dist_to_center, poses: torch.Tensor, ret_transform: bool = False):
+    assert normed_dist_to_center is not None
+    pivotal_pose = compose_extrinsic_RT(poses[:1])
+    dist_to_center = pivotal_pose[:, :3, 3].norm(dim=-1, keepdim=True).item() \
+        if normed_dist_to_center == 'auto' else normed_dist_to_center
+
+    # compute camera norm (new version)
+    canonical_camera_extrinsics = torch.tensor([[
+        [1, 0, 0, 0],
+        [0, 0, -1, -dist_to_center],
+        [0, 1, 0, 0],
+        [0, 0, 0, 1],
+    ]], dtype=torch.float32)
+    pivotal_pose_inv = torch.inverse(pivotal_pose)
+    camera_norm_matrix = torch.bmm(canonical_camera_extrinsics, pivotal_pose_inv)
+
+    # normalize all views
+    poses = compose_extrinsic_RT(poses)
+    poses = torch.bmm(camera_norm_matrix.repeat(poses.shape[0], 1, 1), poses)
+    poses = decompose_extrinsic_RT(poses)
+
+    if ret_transform:
+        return poses, camera_norm_matrix.squeeze(dim=0)
+    return poses
+
+
 def get_normalized_camera_intrinsics(intrinsics: torch.Tensor):
     """
     intrinsics: (N, 3, 2), [[fx, fy], [cx, cy], [width, height]]

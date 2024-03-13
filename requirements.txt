@@ -12,3 +12,4 @@ opencv-python
 optimum[onnxruntime-gpu]
 rembg[gpu,cli]
 httpx[socks]
+tensorboard

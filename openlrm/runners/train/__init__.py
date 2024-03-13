@@ -13,4 +13,4 @@
 # limitations under the License.
 
 
-from .mixer import MixerDataset
+from .lrm import LRMTrainer
