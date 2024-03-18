@@ -15,6 +15,7 @@
 
 import os
 
+NO_PROXY = "OPENLRM_NO_DATA_PROXY" in os.environ
 
 def no_proxy(func):
     """Decorator to disable proxy but then restore after the function call."""
@@ -38,4 +39,7 @@ def no_proxy(func):
             os.environ['HTTP_PROXY'] = HTTP_PROXY
             os.environ['HTTPS_PROXY'] = HTTPS_PROXY
             os.environ['all_proxy'] = all_proxy
-    return wrapper
+    if NO_PROXY:
+        return wrapper
+    else:
+        return func
