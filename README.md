@@ -112,6 +112,16 @@ Model cards with additional details can be found in [model_card.md](model_card.m
   accelerate launch --config_file $ACC_CONFIG -m openlrm.launch train.lrm --config $TRAIN_CONFIG
   ```
 
+### Inference on Trained Models
+- The inference pipeline is compatible with huggingface utilities for better convenience.
+- You need to convert the training checkpoint to inference models by running the following script.
+
+  ```
+  python scripts/convert_hf.py --config <YOUR_EXACT_TRAINING_CONFIG>
+  ```
+
+- The converted model will be saved under `exps/releases` by default and can be used for inference following the [inference guide](https://github.com/3DTopia/OpenLRM?tab=readme-ov-file#inference).
+
 ## Acknowledgement
 
 - We thank the authors of the [original paper](https://arxiv.org/abs/2311.04400) for their great work! Special thanks to Kai Zhang and Yicong Hong for assistance during the reproduction.
