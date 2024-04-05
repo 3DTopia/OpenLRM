@@ -117,7 +117,7 @@ Model cards with additional details can be found in [model_card.md](model_card.m
 - You need to convert the training checkpoint to inference models by running the following script.
 
   ```
-  python scripts/convert_hf.py --config <YOUR_EXACT_TRAINING_CONFIG>
+  python scripts/convert_hf.py --config <YOUR_EXACT_TRAINING_CONFIG> convert.global_step=null
   ```
 
 - The converted model will be saved under `exps/releases` by default and can be used for inference following the [inference guide](https://github.com/3DTopia/OpenLRM?tab=readme-ov-file#inference).
