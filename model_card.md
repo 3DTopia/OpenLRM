@@ -20,11 +20,11 @@
 
 - Model architecture (version==1.1)
 
-    | Type  | Layers | Feat. Dim | Attn. Heads | Triplane Dim. | Input Res. | Image Encoder     | Size  |
-    | :---: | :----: | :-------: | :---------: | :-----------: | :--------: | :---------------: | :---: |
-    | small |   12   |    512    |      8      |      32       |    224     | dinov2_vits14_reg | 446M  |
-    | base  |   12   |    768    |     12      |      48       |    336     | dinov2_vitb14_reg | 1.04G |
-    | large |   16   |   1024    |     16      |      80       |    448     | dinov2_vitb14_reg | 1.81G |
+    | Type  | Layers | Feat. Dim | Attn. Heads | Triplane Dim. | Input Res. | Image Encoder     | Encoder Dim. | Size  |
+    | :---: | :----: | :-------: | :---------: | :-----------: | :--------: | :---------------: | :----------: | :---: |
+    | small |   12   |    512    |      8      |      32       |    224     | dinov2_vits14_reg |      384     | 446M  |
+    | base  |   12   |    768    |     12      |      48       |    336     | dinov2_vitb14_reg |      768     | 1.04G |
+    | large |   16   |   1024    |     16      |      80       |    448     | dinov2_vitb14_reg |      768     | 1.81G |
 
 - Training settings
 
